@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSU MSES</title>
+    <link rel="stylesheet" href="css/style.css?v=3.0">
+</head>
+<body>
+    <div id="theme-menu" class="dropdown">
+        <button id="theme-btn" class="dropbtn"><span id="current-theme-name">Bronze</span> <span class="arrow">▾</span></button>
+        <div id="theme-dropdown" class="dropdown-content"></div>
+    </div>
+
+    <main class="container">
+        
+        <!-- Schedule Banner -->
+        <div class="schedule-banner">
+            <span><strong>Weekly Meetings:</strong> Mondays 6:30-7:30 PM (Help Room @ 5:30 PM) &bull; STEM 2004</span>
+        </div>
+
+        <!-- Header Box -->
+        <section class="box header-box">
+            <h1 class="title-with-logos">
+                <img src="images/helmet.png" alt="MSU Spartan Helmet" class="title-logo">
+                <span>MSU MSES</span>
+                <img src="images/helmet.png" alt="MSU Spartan Helmet" class="title-logo">
+            </h1>
+        </section>
+
+        <!-- Countdown Box -->
+        <section class="box countdown-box">
+            <h3>Countdown to <a href="https://www.asminternational.org/imat-event/" target="_blank" class="imat-link">IMAT</a></h3>
+            <div id="countdown"></div>
+            <p class="countdown-tagline">MSES hits Quebec City, Canada to attend this premier materials conference!</p>
+        </section>
+
+        <!-- Latest Blog Post Container -->
+        <section id="recent-post-section" class="box" style="display: none;">
+            <h3>Latest from the Blog</h3>
+            <div id="recent-post-content">
+                <!-- Content will be injected here -->
+            </div>
+            <div style="margin-top: 25px; text-align: right;">
+                <a href="blog.html" class="link">View Full Blog →</a>
+            </div>
+        </section>
+
+        <!-- Quick Links Box -->
+        <section class="box quick-links-box">
+            <div class="quick-links-container">
+                <a href="resources.html" class="quick-link">
+                    <h4>Resources</h4>
+                    <p>Some of our favorite MSE things</p>
+                </a>
+                <a href="blog.html" class="quick-link">
+                    <h4>Blog</h4>
+                    <p>Club updates and activities!</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- What is MSES Box -->
+        <section class="box">
+            <h3>What is MSES?</h3>
+            <p>
+                The Materials Science and Engineering Society (MSES) at Michigan State University is dedicated to fostering a community of students passionate about the materials field. We provide professional development opportunities, academic support, and a social network for future engineers and scientists. We also do lots of fun MSE crafts and social events!
+            </p>
+            <p>
+                Whether you are interested in metals, polymers, ceramics, or more, we would love to have ya!
+            </p>
+        </section>
+
+        <!-- Unit Cell Explorer -->
+        <section class="box">
+            <h3>Unit Cell Explorer</h3>
+            <p>Use your mouse to click and drag to rotate the 3D unit cells. Switch between different lattice structures to inspect their geometry.</p>
+            <div class="explorer-container">
+                <div class="explorer-controls" style="flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 600px; margin: 0 auto;">
+                    <button id="btn-polonium" class="explorer-btn">Simple Cubic (SC)</button>
+                    <button id="btn-bcc" class="explorer-btn active">Bronze (BCC)</button>
+                    <button id="btn-fcc" class="explorer-btn">Aluminum (FCC)</button>
+                    <button id="btn-martensite" class="explorer-btn">Martensite (BCT)</button>
+                    <button id="btn-perovskite" class="explorer-btn">Perovskite (ABO3)</button>
+                    <button id="btn-halite" class="explorer-btn">Halite (NaCl)</button>
+                    <button id="btn-diamond" class="explorer-btn">Diamond (ZnS)</button>
+                    <button id="btn-graphene" class="explorer-btn">Graphene (2D)</button>
+                    <button id="btn-hcp" class="explorer-btn">Titanium (HCP)</button>
+                </div>
+                <canvas id="crystal-canvas" width="400" height="350"></canvas>
+            </div>
+        </section>
+
+        <!-- The Board Box -->
+        <section class="box board-box">
+            <h3>Meet the Board</h3>
+
+            <div class="board-members-list">
+                <!-- President -->
+                <div class="member">
+                    <img src="images/reedheadshot.jpeg" alt="Reed Blocksome Headshot" class="member-headshot">
+                    <div class="member-details">
+                        <h4>M. Reed Blocksome</h4>
+                        <span class="position">President</span>
+                        <p class="bio">Reed is a passionate MSE student with wideranging interests. He studies soft matter and chemichal physics to develop "smart materials" in the <a href="https://carolineszczepanski.com/" target="_blank" class="link">Szczepanski Lab</a>. He has co-authored an article in <i>Macromolecules</i> on photoswitchable cross-linking with expansions on this topic in the works. He also serves as President of the MSU Bladesmithing Club and competes nationally on the MSU Crew team.</p>
+                        <div class="member-links">
+                            <a href="https://www.linkedin.com/in/reedblocksome" target="_blank" class="link">LinkedIn Profile</a> &bull; 
+                            <a href="mailto:blocksom@msu.edu" class="link">blocksom@msu.edu</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vice President -->
+                <div class="member">
+                    <img src="images/lilyheadshot.jpg" alt="Lily Velez-Lewis Headshot" class="member-headshot">
+                    <div class="member-details">
+                        <h4>Lily Velez-Lewis</h4>
+                        <span class="position">Vice President</span>
+                        <p class="bio">Lily is a materials science junior pursuing a concentration in metallurgy and a minor in geophysics. She currently works in the <a href="https://sukidorfman.rocks/people/" target="_blank" class="link">Dorfman Mineral Physics Lab</a> studying how iron concentrations in deep earth minerals affect seismic wave velocities, alongside a project at Arizona State University focused on impact meteor crater dating. Outside of her academic and research pursuits, Lily can often be found forging, exploring, or spending time with her dog, Fozzie.</p>
+                        <div class="member-links">
+                            <a href="https://www.linkedin.com/in/lily-velez-lewis-a15671247/" target="_blank" class="link">LinkedIn Profile</a> &bull; 
+                            <a href="mailto:velezlil@msu.edu" class="link">velezlil@msu.edu</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Treasurer -->
+                <div class="member">
+                    <img src="images/grahamheadshot.jpg" alt="Graham Rainoldi Headshot" class="member-headshot">
+                    <div class="member-details">
+                        <h4>Graham Rainoldi</h4>
+                        <span class="position">Treasurer</span>
+                        <p class="bio">Graham manages society finances and helps coordinate fundraising and professional development events for members.</p>
+                        <div class="member-links">
+                            <a href="https://www.linkedin.com/in/graham-rainoldi/" target="_blank" class="link">LinkedIn Profile</a> &bull; 
+                            <a href="mailto:rainold1@msu.edu" class="link">rainold1@msu.edu</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secretary -->
+                <div class="member">
+                    <img src="images/courtneyheadshot.jpg" alt="Courtney Crews Headshot" class="member-headshot">
+                    <div class="member-details">
+                        <h4>Courtney Crews</h4>
+                        <span class="position">Secretary</span>
+                        <p class="bio">Courtney is a junior MSE student and engineer for MSU Baja Racing, where she recently spearheaded failure analysis on a gearbox gear to determine failure modes and develop improved testing strategies for competition. This past summer, she interned at AGS Automotive, auditing assembly lines and optimizing time studies for truck bumper production for the "Big 3" automakers.</p>
+                        <div class="member-links">
+                            <a href="https://www.linkedin.com/in/courtney-crews-002a29275/" target="_blank" class="link">LinkedIn Profile</a> &bull; 
+                            <a href="mailto:crewscou@msu.edu" class="link">crewscou@msu.edu</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Outreach Chair -->
+                <div class="member">
+                    <img src="images/lukeheadshot.JPG" alt="Luke Brydges Headshot" class="member-headshot">
+                    <div class="member-details">
+                        <h4>Luke Brydges</h4>
+                        <span class="position">Outreach Chair</span>
+                        <p class="bio">Luke is a senior from Buffalo, NY, majoring in Civil Engineering with a Materials Science and Engineering minor. In addition to serving on the MSES board, he is an active member of the MSU Bladesmithing Club. Luke is passionate about fitness, skiing, playing pickleball, and traveling. Following graduation, he plans to get involved in industrial aerospace applications. Go Bills!</p>
+                        <div class="member-links">
+                            <a href="https://www.linkedin.com/in/luke-brydges-5ab800298/" target="_blank" class="link">LinkedIn Profile</a> &bull; 
+                            <a href="mailto:brydgesl@msu.edu" class="link">brydgesl@msu.edu</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education Chair -->
+                <div class="member">
+                    <img src="images/marcheadshot.jpeg" alt="Marc Woods Headshot" class="member-headshot">
+                    <div class="member-details">
+                        <h4>Marc Woods</h4>
+                        <span class="position">Education Chair</span>
+                        <p class="bio">Marc is an MSE junior with research experience in 3D-printed materials and tissue engineering, where he focuses on developing and testing materials for biomedical applications. Outside of his academic and research pursuits, Marc enjoys music, running, and playing basketball. He is passionate about his field and excited to help spread awareness of the wonders of materials science across the MSU community.</p>
+                        <div class="member-links">
+                            <a href="https://www.linkedin.com/in/marc-woods1" target="_blank" class="link">LinkedIn Profile</a> &bull; 
+                            <a href="mailto:woodsm11@msu.edu" class="link">woodsm11@msu.edu</a>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <!-- Faculty Advisor -->
+                <div class="member">
+                    <img src="images/tylerheadshot.jpg" alt="Dr. Tyler Johnson Headshot" class="member-headshot">
+                    <div class="member-details">
+                        <h4>Dr. Tyler Johnson</h4>
+                        <span class="position">Faculty Advisor</span>
+                        <p class="bio">Dr. Johnson is a Teaching Specialist in the Department of Chemical Engineering and Materials Science. He provides guidance to the society and supports our mission of professional and academic growth. If he doesn't hold back, Dr. Johnson will always win MSES materials jeapordy.</p>
+                        <div class="member-links">
+                            <a href="https://www.linkedin.com/in/tyler-johnson-35a23a257/" target="_blank" class="link">LinkedIn Profile</a> &bull; 
+                            <a href="mailto:john4369@msu.edu" class="link">john4369@msu.edu</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Box -->
+        <section class="box contact-box">
+            <h3>Contact Us</h3>
+            <p>Interested in joining or partnering with us? Shoot us an email or DM us on Instagram!</p>
+            <p class="email-container">
+                <strong>Email:</strong> <a href="mailto:rso.mses@msu.edu">rso.mses@msu.edu</a><br>
+                <strong>Instagram:</strong> <a href="https://www.instagram.com/msu.mses/" target="_blank">@msu.mses</a>
+            </p>
+            <hr class="divider">
+            <p class="affiliation">
+                An official student chapter of <a href="https://www.asminternational.org/" target="_blank" style="color: #000; font-weight: bold; text-decoration: underline;">ASM International</a>.
+            </p>
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Set the date and time of the conference start (September 28, 2026, 7:00 AM EST)
+            const conferenceDate = new Date("September 28, 2026 07:00:00 EST").getTime();
+
+            // Update the countdown every 1 second
+            const x = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = conferenceDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("countdown").innerHTML = "THE CONFERENCE HAS BEGUN!";
+                }
+            }, 1000);
+
+            // Fetch latest blog post from blog.html
+            fetch('blog.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.text();
+                })
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    
+                    // The first .box that isn't the header-box is the latest post
+                    const posts = doc.querySelectorAll('.box:not(.header-box)');
+                    if (posts.length > 0) {
+                        const latestPost = posts[0];
+                        const container = document.getElementById('recent-post-content');
+                        const section = document.getElementById('recent-post-section');
+                        
+                        // Inject content
+                        container.innerHTML = latestPost.innerHTML;
+                        
+                        // Show and trigger fade-in
+                        section.style.display = 'block';
+                        setTimeout(() => {
+                            section.classList.add('visible');
+                        }, 50);
+                    }
+                })
+                .catch(err => {
+                    console.log('Automated blog fetch disabled (likely local file access). Content will appear when hosted.');
+                });
+        });
+    </script>
+    <script src="js/theme.js?v=3.0"></script>
+    <script src="js/crystal.js?v=3.0"></script>
+</body>
+</html>

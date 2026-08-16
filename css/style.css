@@ -1,0 +1,552 @@
+:root {
+    --accent-color: #b0754c; /* Default to Bronze */
+    --accent-glow: rgba(176, 117, 76, 0.3);
+    --helmet-glow: rgba(176, 117, 76, 0.6); /* Default Bronze Glow */
+    --bg-color: #ffffff;
+    --bg-svg: none;
+    --bg-svg-size: auto;
+    --bg-image: none;
+    --text-color: #333333;
+    --heading-color: #111111;
+    --subheading-color: #555555;
+    --box-bg: #ffffff;
+    --box-border: #cccccc;
+    --box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    --box-blur: none;
+    --gradient-stop-1: #18453B; /* Default MSU Green */
+    --gradient-stop-2: #b0754c; /* Default Metallic Bronze */
+    --gradient-stop-3: #b0754c;
+}
+
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    background-image: var(--bg-svg), var(--bg-image);
+    background-size: var(--bg-svg-size), cover;
+    background-repeat: repeat, no-repeat;
+    background-attachment: scroll, fixed; /* Fixes gradient so it stretches perfectly across viewport */
+    animation: slideBackground linear infinite;
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 40px 20px 100px 20px; /* Increased bottom padding for breathability */
+    transition: background-color 0.4s ease, color 0.4s ease, background-image 0.4s ease;
+}
+
+@keyframes slideBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 0; /* Move exactly one tile width */
+    }
+}
+
+/* Main Container to center everything */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    gap: 30px; /* Space between the boxes */
+}
+
+/* Schedule Banner Styling */
+.schedule-banner {
+    background-color: var(--box-bg);
+    color: var(--text-color);
+    width: 100%;
+    padding: 15px 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--box-border);
+    z-index: 1;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    backdrop-filter: var(--box-blur);
+    -webkit-backdrop-filter: var(--box-blur);
+    transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, color 0.4s ease;
+}
+
+
+/* Dropdown Container */
+.dropdown {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: none;
+    box-shadow: 0 4px 12px var(--accent-glow);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: inherit;
+}
+
+.dropbtn:hover {
+    filter: brightness(1.25);
+}
+
+.dropbtn .arrow {
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.dropdown.active .arrow {
+    transform: rotate(180deg);
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+    margin-top: 5px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+.dropdown.active .dropdown-content {
+    display: block;
+}
+
+/* Links/Buttons inside the dropdown */
+.dropdown-content button {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    font-family: inherit;
+}
+
+.dropdown-content button:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown-content button.active {
+    background-color: var(--accent-color);
+    color: #fff;
+    font-weight: 700;
+}
+
+/* The Box Styling (Option B: Solid white boxes) */
+.box {
+    background-color: var(--box-bg);
+    width: 100%;
+    padding: 40px;
+    border-radius: 8px; /* Slightly rounded corners */
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--box-border);
+    position: relative; /* Ensure boxes sit above the background */
+    z-index: 1;
+    backdrop-filter: var(--box-blur);
+    -webkit-backdrop-filter: var(--box-blur);
+    transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Typography inside boxes */
+h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    color: var(--heading-color);
+}
+
+h1.title-with-logos {
+    font-size: 5.5rem;
+    margin-bottom: 0;
+    letter-spacing: 3px;
+}
+
+/* Metallic Multi-Tone Branding */
+h1.title-with-logos span {
+    background: linear-gradient(135deg, var(--gradient-stop-1) 0%, var(--gradient-stop-2) 50%, var(--gradient-stop-3) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 4px var(--accent-glow));
+    transition: filter 0.4s ease, background 0.4s ease;
+}
+
+.title-with-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: nowrap;
+}
+
+.title-logo {
+    height: 5.5rem;
+    width: auto;
+    filter: drop-shadow(0 0 10px var(--helmet-glow));
+    transition: filter 0.4s ease;
+}
+
+@media (max-width: 600px) {
+    .title-with-logos {
+        gap: 10px;
+    }
+    .title-logo {
+        height: 3rem;
+        filter: drop-shadow(0 0 6px var(--helmet-glow));
+    }
+    h1.title-with-logos {
+        font-size: 3rem;
+    }
+}
+
+h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--subheading-color);
+}
+
+h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 12px;
+    color: var(--heading-color);
+    border-bottom: none;
+    transition: color 0.4s ease;
+}
+
+h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gradient-stop-1) 0%, var(--gradient-stop-2) 50%, var(--gradient-stop-3) 100%);
+    border-radius: 2px;
+    transition: background 0.4s ease;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+/* Specific Box Styling */
+.header-box {
+    text-align: center;
+    padding: 60px 40px;
+    width: 550px; /* Snug identical fit for subpage headers */
+    max-width: 100%;
+}
+
+.header-box:has(.title-with-logos) {
+    padding: 52px 40px;
+    width: 100%; /* Keep homepage header full-width */
+}
+
+/* Board Section Styling */
+.board-photo-container {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.board-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.board-members-list {
+    display: flex;
+    flex-direction: column;
+    gap: 45px; /* 45px total spacing between members */
+}
+
+.member {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 25px;
+    align-items: stretch; /* Stretch children to fill the row height */
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.member:last-child {
+    margin-bottom: 0;
+}
+
+.member-headshot {
+    width: 100%;
+    height: 100%; /* Stretch to fill the grid cell height */
+    object-fit: cover;
+    border-radius: 4px;
+    border: 2px solid #ddd;
+    flex-shrink: 0;
+}
+
+@media (max-width: 650px) {
+    .member {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+    }
+    .member-headshot {
+        width: 180px;
+        height: 180px;
+        aspect-ratio: 1/1;
+    }
+}
+
+.member-details {
+    flex-grow: 1;
+}
+
+.member-details h4 {
+    font-size: 1.4rem;
+    color: var(--heading-color);
+    margin-bottom: 2px;
+}
+
+.member-details .position {
+    display: block;
+    font-weight: 600;
+    color: var(--subheading-color);
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Countdown Box Specific Styles */
+.countdown-box {
+    text-align: center;
+    max-width: 500px; /* Make the box narrower */
+    margin: 0 auto; /* Center the narrower box */
+}
+
+.countdown-box #countdown {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin: 20px 0;
+    letter-spacing: 1.5px;
+}
+
+.countdown-tagline {
+    font-size: 1.1rem;
+    color: var(--subheading-color);
+    margin-top: 15px;
+    line-height: 1.5;
+}
+
+.member-details .bio {
+    margin-bottom: 10px;
+}
+
+.link {
+    display: inline-block;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 2px solid var(--accent-color);
+    transition: color 0.2s, border-color 0.2s, text-shadow 0.2s;
+}
+
+.link:hover {
+    color: var(--heading-color);
+    border-color: var(--heading-color);
+    text-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* Quick Links Box Styling */
+.quick-links-box {
+    padding: 20px 40px; /* Shorter padding */
+}
+
+.quick-links-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.quick-link {
+    flex: 1;
+    min-width: 200px;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background-color: var(--box-bg);
+    backdrop-filter: var(--box-blur);
+    -webkit-backdrop-filter: var(--box-blur);
+}
+
+.quick-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px var(--accent-glow);
+    border-color: var(--accent-color);
+    background-color: var(--box-bg);
+}
+
+.quick-link h4 {
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+    color: var(--heading-color);
+}
+
+.quick-link p {
+    font-size: 0.9rem;
+    color: var(--subheading-color);
+    margin-bottom: 0;
+}
+
+/* Contact Section Styling */
+.contact-box {
+    text-align: center;
+}
+
+.email-container a {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-color);
+    transition: color 0.2s, border-color 0.2s, text-shadow 0.2s;
+}
+
+.email-container a:hover {
+    color: #111;
+    border-color: #111;
+    text-shadow: 0 0 8px var(--accent-glow);
+}
+
+.divider {
+    border: 0;
+    height: 1px;
+    background-color: #eee;
+    margin: 25px 0; /* Default safe spacing */
+}
+
+.board-box .divider {
+    margin: -22.5px 0; /* Perfectly centered within 45px gap specifically for board list */
+}
+
+.affiliation {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.imat-link {
+    color: var(--accent-color);
+    text-decoration: none;
+    border-bottom: 2px solid var(--accent-color);
+    transition: color 0.2s, border-color 0.2s, text-shadow 0.2s;
+}
+
+.imat-link:hover {
+    color: var(--heading-color);
+    border-color: var(--heading-color);
+    text-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* 3D Crystal Explorer Styles */
+.explorer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.explorer-controls {
+    display: flex;
+    gap: 12px;
+}
+
+.explorer-btn {
+    padding: 10px 20px;
+    border: 2px solid var(--accent-color);
+    background-color: var(--box-bg);
+    backdrop-filter: var(--box-blur);
+    -webkit-backdrop-filter: var(--box-blur);
+    color: var(--accent-color);
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.explorer-btn:hover {
+    box-shadow: 0 0 12px var(--accent-glow);
+    background-color: var(--accent-glow);
+    color: var(--heading-color);
+}
+
+.explorer-btn.active {
+    background-color: var(--accent-color);
+    color: white;
+    box-shadow: 0 4px 12px var(--accent-glow);
+}
+
+#crystal-canvas {
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: grab;
+    max-width: 100%;
+}
+
+#recent-post-section {
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+#recent-post-section.visible {
+    opacity: 1;
+}
+
