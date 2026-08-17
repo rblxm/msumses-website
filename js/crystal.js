@@ -366,7 +366,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let highlightColor = '#ffffff';
             let shadowColor = '#000000';
             let isInterior = false;
-            if (['center', 'face', 'tetra', 'cation', 'zinc', 'silicon', 'oxygen', 'anion'].includes(atom.type)) isInterior = true;
+            if (['center', 'face', 'tetra', 'cation', 'zinc', 'silicon', 'oxygen'].includes(atom.type)) isInterior = true;
 
             if (isInterior) {
                 mainColor = '#94a3b8';
@@ -388,6 +388,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 highlightColor = '#ffffff';
             } else if (activeType === 'hcp') {
                 radius = atom.type === 'center' ? baseRadius * 0.8 : baseRadius * 0.9;
+            } else if (activeType === 'halite') {
+                radius = baseRadius * 0.7; // Smaller atoms for the dense Halite grid
             }
 
             const grad = ctx.createRadialGradient(atom.x - radius * 0.35, atom.y - radius * 0.35, radius * 0.05, atom.x, atom.y, radius);
