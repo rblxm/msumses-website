@@ -27,6 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Load geometry definitions
     function loadGeometry(type) {
         activeType = type;
+        const isMobile = window.innerWidth < 650;
+        const baseScale = isMobile ? 65 : 95; 
+
         if (type === 'polonium') {
             // Polonium (Simple Cubic) - 8 corner atoms
             vertices = [
@@ -38,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 {x: 1, y: -1, z: 1, type: 'corner'},
                 {x: 1, y: 1, z: 1, type: 'corner'},
                 {x: -1, y: 1, z: 1, type: 'corner'}
-            ].map(v => ({ x: v.x * 95, y: v.y * 95, z: v.z * 95, type: v.type }));
+            ].map(v => ({ x: v.x * baseScale, y: v.y * baseScale, z: v.z * baseScale, type: v.type }));
 
             edges = [
                 [0, 1], [1, 2], [2, 3], [3, 0], // Back plane
@@ -47,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ];
         } else if (type === 'martensite') {
             // Martensite (Stretched BCT with center atom)
+            const mScale = isMobile ? 55 : 75;
             vertices = [
                 {x: -1, y: -1.5, z: -1, type: 'corner'},
                 {x: 1, y: -1.5, z: -1, type: 'corner'},
@@ -57,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 {x: 1, y: 1.5, z: 1, type: 'corner'},
                 {x: -1, y: 1.5, z: 1, type: 'corner'},
                 {x: 0, y: 0, z: 0, type: 'center'} // Interstitial Carbon / Body Center
-            ].map(v => ({ x: v.x * 75, y: v.y * 75, z: v.z * 75, type: v.type }));
+            ].map(v => ({ x: v.x * mScale, y: v.y * mScale, z: v.z * mScale, type: v.type }));
 
             edges = [
                 [0, 1], [1, 2], [2, 3], [3, 0], // Back plane
@@ -66,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ];
         } else if (type === 'perovskite') {
             // Perovskite (ABO3 Solar Lattice)
+            const pScale = isMobile ? 65 : 90;
             vertices = [
                 // A-site Corners (8)
                 {x: -1, y: -1, z: -1, type: 'corner'},
@@ -87,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 
                 // B-site Center Cation (1)
                 {x: 0, y: 0, z: 0, type: 'center'}
-            ].map(v => ({ x: v.x * 90, y: v.y * 90, z: v.z * 90, type: v.type }));
+            ].map(v => ({ x: v.x * pScale, y: v.y * pScale, z: v.z * pScale, type: v.type }));
 
             edges = [
                 // Outer Cube Edges (0 to 11)
@@ -103,6 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ];
         } else if (type === 'zinc') {
             // Zinc Blende (ZnS - FCC Sulfur + 4 Zn Tetrahedral sites)
+            const zScale = isMobile ? 65 : 90;
             vertices = [
                 // FCC Sulfur Corners (8)
                 {x: -1, y: -1, z: -1, type: 'sulfur'},
@@ -125,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 {x: 0.5, y: 0.5, z: -0.5, type: 'zinc'},   // T2
                 {x: -0.5, y: 0.5, z: 0.5, type: 'zinc'},    // T3
                 {x: 0.5, y: -0.5, z: 0.5, type: 'zinc'}    // T4
-            ].map(v => ({ x: v.x * 90, y: v.y * 90, z: v.z * 90, type: v.type }));
+            ].map(v => ({ x: v.x * zScale, y: v.y * zScale, z: v.z * zScale, type: v.type }));
 
             edges = [
                 // Bounding Cube Frame (0 to 11)
@@ -140,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ];
         } else if (type === 'graphene') {
             // Honeycomb Graphene Patch
-            const R = 50;
+            const R = isMobile ? 35 : 50;
             const rawVertices = [];
             const centers = [
                 {x: 0, z: 0},
@@ -203,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 {x: 1, y: 1, z: 1, type: 'corner'},
                 {x: -1, y: 1, z: 1, type: 'corner'},
                 {x: 0, y: 0, z: 0, type: 'center'}
-            ].map(v => ({ x: v.x * 95, y: v.y * 95, z: v.z * 95, type: v.type }));
+            ].map(v => ({ x: v.x * baseScale, y: v.y * baseScale, z: v.z * baseScale, type: v.type }));
 
             edges = [
                 [0, 1], [1, 2], [2, 3], [3, 0],
@@ -227,7 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 {x: 1, y: 0, z: 0, type: 'face'},
                 {x: 0, y: 0, z: -1, type: 'face'},
                 {x: 0, y: 0, z: 1, type: 'face'}
-            ].map(v => ({ x: v.x * 95, y: v.y * 95, z: v.z * 95, type: v.type }));
+            ].map(v => ({ x: v.x * baseScale, y: v.y * baseScale, z: v.z * baseScale, type: v.type }));
 
             edges = [
                 [0, 1], [1, 2], [2, 3], [3, 0],
@@ -236,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ];
         } else if (type === 'halite') {
             // Halite (NaCl)
-            const S = 65;
+            const S = isMobile ? 45 : 65;
             const rawVertices = [];
             for (let x = -1; x <= 1; x++) {
                 for (let y = -1; y <= 1; y++) {
@@ -260,8 +266,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         } else if (type === 'hcp') {
             // Hexagonal Close Packed (HCP - Titanium)
-            const Rh = 100;
-            const H = 160;
+            const Rh = isMobile ? 70 : 100;
+            const H = isMobile ? 110 : 160;
             vertices = [];
             for (let i = 0; i < 6; i++) {
                 const angle = (i * Math.PI) / 3;
@@ -296,6 +302,10 @@ document.addEventListener("DOMContentLoaded", () => {
         ctx.clearRect(0, 0, rect.width, rect.height);
         const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim() || '#18453B';
         const accentGlow = getComputedStyle(document.documentElement).getPropertyValue('--accent-glow').trim() || 'rgba(24, 69, 59, 0.2)';
+
+        // Responsive atom size
+        const isMobile = window.innerWidth < 650;
+        const baseRadius = isMobile ? 12 : 18;
 
         const projected = vertices.map(v => {
             const y1 = v.y * Math.cos(rx) - v.z * Math.sin(rx);
@@ -351,7 +361,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         sortedAtoms.forEach(atom => {
             ctx.beginPath();
-            let radius = 18;
+            let radius = baseRadius;
             let mainColor = accentColor;
             let highlightColor = '#ffffff';
             let shadowColor = '#000000';
@@ -369,15 +379,15 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             if (activeType === 'perovskite') {
-                radius = atom.type === 'corner' ? 16 : (atom.type === 'center' ? 11 : 13);
+                radius = atom.type === 'corner' ? baseRadius * 0.9 : (atom.type === 'center' ? baseRadius * 0.6 : baseRadius * 0.7);
             } else if (activeType === 'bcc' || activeType === 'martensite' || activeType === 'fcc') {
-                radius = (atom.type === 'center' || atom.type === 'face') ? 17 : 15;
+                radius = (atom.type === 'center' || atom.type === 'face') ? baseRadius * 0.95 : baseRadius * 0.85;
             } else if (activeType === 'graphene') {
-                radius = 13;
+                radius = baseRadius * 0.75;
                 mainColor = accentColor;
                 highlightColor = '#ffffff';
             } else if (activeType === 'hcp') {
-                radius = atom.type === 'center' ? 14 : 16;
+                radius = atom.type === 'center' ? baseRadius * 0.8 : baseRadius * 0.9;
             }
 
             const grad = ctx.createRadialGradient(atom.x - radius * 0.35, atom.y - radius * 0.35, radius * 0.05, atom.x, atom.y, radius);
@@ -407,8 +417,18 @@ document.addEventListener("DOMContentLoaded", () => {
     canvas.addEventListener('mousedown', (e) => startDrag(e.clientX, e.clientY));
     window.addEventListener('mousemove', (e) => moveDrag(e.clientX, e.clientY));
     window.addEventListener('mouseup', () => { isDragging = false; });
-    canvas.addEventListener('touchstart', (e) => { if (e.touches.length === 1) startDrag(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
-    window.addEventListener('touchmove', (e) => { if (isDragging && e.touches.length === 1) moveDrag(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
+    canvas.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+            e.preventDefault(); // Prevent scrolling when starting to drag
+            startDrag(e.touches[0].clientX, e.touches[0].clientY);
+        }
+    }, { passive: false });
+    window.addEventListener('touchmove', (e) => {
+        if (isDragging && e.touches.length === 1) {
+            e.preventDefault(); // Prevent scrolling while dragging
+            moveDrag(e.touches[0].clientX, e.touches[0].clientY);
+        }
+    }, { passive: false });
     window.addEventListener('touchend', () => { isDragging = false; });
 
     const btnPolonium = document.getElementById('btn-polonium');

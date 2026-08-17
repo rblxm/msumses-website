@@ -218,19 +218,6 @@ h1.title-with-logos span {
     transition: filter 0.4s ease;
 }
 
-@media (max-width: 600px) {
-    .title-with-logos {
-        gap: 10px;
-    }
-    .title-logo {
-        height: 3rem;
-        filter: drop-shadow(0 0 6px var(--helmet-glow));
-    }
-    h1.title-with-logos {
-        font-size: 3rem;
-    }
-}
-
 h2 {
     font-size: 1.2rem;
     font-weight: 400;
@@ -271,13 +258,16 @@ p:last-child {
 .header-box {
     text-align: center;
     padding: 60px 40px;
-    width: 550px; /* Snug identical fit for subpage headers */
-    max-width: 100%;
+    width: fit-content;
+    min-width: 320px;
+    max-width: 90%;
+    margin: 0 auto;
 }
 
 .header-box:has(.title-with-logos) {
     padding: 52px 40px;
     width: 100%; /* Keep homepage header full-width */
+    max-width: 100%;
 }
 
 /* Board Section Styling */
@@ -320,21 +310,6 @@ p:last-child {
     border-radius: 4px;
     border: 2px solid #ddd;
     flex-shrink: 0;
-}
-
-@media (max-width: 650px) {
-    .member {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 15px;
-    }
-    .member-headshot {
-        width: 180px;
-        height: 180px;
-        aspect-ratio: 1/1;
-    }
 }
 
 .member-details {
@@ -550,3 +525,84 @@ p:last-child {
     opacity: 1;
 }
 
+/* ==========================================
+   MOBILE RESPONSIVE OVERRIDES (iPhone/Small Windows)
+   ========================================== */
+@media (max-width: 650px) {
+    body {
+        padding: 15px 10px 80px 10px; /* Slimmer margins */
+    }
+
+    .container {
+        gap: 20px;
+    }
+
+    /* 1. Universal Box Compression */
+    .box {
+        padding: 25px 18px; /* More room for text content */
+    }
+
+    /* 2. One-Line Branding Header */
+    h1.title-with-logos {
+        font-size: 2.1rem !important; /* Forces one-line fit on iPhone 13/14/15 */
+        gap: 10px !important;
+        letter-spacing: 1px;
+    }
+    .title-logo {
+        height: 2.2rem !important;
+    }
+
+    /* 3. Fluid Subpage Headers */
+    .header-box {
+        width: 95% !important;
+        padding: 25px 15px !important;
+    }
+
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1rem; }
+    h3 { font-size: 1.5rem; }
+
+    /* 4. Better Button Tapping Experience */
+    .quick-links-container {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+    .quick-link {
+        width: 100%;
+        padding: 15px;
+    }
+
+    /* 5. Unit Cell Explorer Optimization */
+    .explorer-controls {
+        gap: 6px;
+        justify-content: center;
+    }
+    .explorer-btn {
+        padding: 8px 10px;
+        font-size: 0.75rem;
+    }
+    #crystal-canvas {
+        height: 250px; /* Slimmer for mobile viewports */
+    }
+
+    /* 6. Board Member Mobile Styling */
+    .member {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+    }
+    .member-headshot {
+        width: 160px;
+        height: 160px;
+        aspect-ratio: 1/1;
+    }
+
+    /* 7. Prevent Countdown Wrapping */
+    .countdown-box #countdown {
+        font-size: 1.5rem;
+        letter-spacing: 0.5px;
+    }
+}
