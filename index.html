@@ -29,13 +29,6 @@
             </h1>
         </section>
 
-        <!-- Countdown Box -->
-        <section class="box countdown-box">
-            <h3>Countdown to <a href="https://www.asminternational.org/imat-event/" target="_blank" class="imat-link">IMAT</a></h3>
-            <div id="countdown"></div>
-            <p class="countdown-tagline">MSES hits Quebec City, Canada to attend this premier materials conference!</p>
-        </section>
-
         <!-- Latest Blog Post Container -->
         <section id="recent-post-section" class="box" style="display: none;">
             <div id="recent-post-content">
@@ -215,28 +208,6 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Set the date and time of the conference start (September 28, 2026, 7:00 AM EST)
-            const conferenceDate = new Date("September 28, 2026 07:00:00 EST").getTime();
-
-            // Update the countdown every 1 second
-            const x = setInterval(function() {
-                const now = new Date().getTime();
-                const distance = conferenceDate - now;
-
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-                + minutes + "m " + seconds + "s ";
-
-                if (distance < 0) {
-                    clearInterval(x);
-                    document.getElementById("countdown").innerHTML = "THE CONFERENCE HAS BEGUN!";
-                }
-            }, 1000);
-
             // Fetch latest blog post from blog.html
             fetch('blog.html')
                 .then(response => {

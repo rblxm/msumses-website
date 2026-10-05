@@ -332,28 +332,6 @@ p:last-child {
     letter-spacing: 1px;
 }
 
-/* Countdown Box Specific Styles */
-.countdown-box {
-    text-align: center;
-    max-width: 500px; /* Make the box narrower */
-    margin: 0 auto; /* Center the narrower box */
-}
-
-.countdown-box #countdown {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--accent-color);
-    margin: 20px 0;
-    letter-spacing: 1.5px;
-}
-
-.countdown-tagline {
-    font-size: 1.1rem;
-    color: var(--subheading-color);
-    margin-top: 15px;
-    line-height: 1.5;
-}
-
 .member-details .bio {
     margin-bottom: 10px;
 }
@@ -598,11 +576,5 @@ p:last-child {
         width: 160px;
         height: 160px;
         aspect-ratio: 1/1;
-    }
-
-    /* 7. Prevent Countdown Wrapping */
-    .countdown-box #countdown {
-        font-size: 1.5rem;
-        letter-spacing: 0.5px;
     }
 }
