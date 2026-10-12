@@ -270,6 +270,20 @@ p:last-child {
     max-width: 100%;
 }
 
+/* Blog Photo Styling */
+.blog-photo-container {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.blog-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+    border: 1px solid var(--box-border);
+}
+
 /* Board Section Styling */
 .board-photo-container {
     width: 100%;
